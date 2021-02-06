@@ -1,0 +1,79 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <ion-buttons slot="start">
+      <ion-button (click)="cancel()">
+        <ion-icon slot="icon-only" name="close-circle"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Back</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <ion-card>
+    <ion-spinner name="bubbles" color="primary" class="center" *ngIf="progressBar"></ion-spinner>
+    <ion-card-content>
+      <form name="client" (ngSubmit)="addApplication()" #formRegister="ngForm" novalidate>
+        <ion-item>
+          <ion-label position="floating">Name</ion-label>
+          <ion-input type="text" placeholder="Add name" name="name" [(ngModel)]="application.name" #name="ngModel" required></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Description</ion-label>
+          <ion-textarea type="text" placeholder="Enter description" name="description" [(ngModel)]="application.description"
+            #description="ngModel" required></ion-textarea>
+        </ion-item>
+        <ion-list>
+          <ion-radio-group value="biff" (ionChange)="setCriticality($event)">
+            <ion-list-header>
+              <ion-label>Criticality</ion-label>
+            </ion-list-header>
+
+            <ion-item>
+              <ion-label>LOW</ion-label>
+              <ion-radio slot="start" value="LOW"></ion-radio>
+            </ion-item>
+
+            <ion-item>
+              <ion-label>MEDIUM</ion-label>
+              <ion-radio slot="start" value="MEDIUM"></ion-radio>
+            </ion-item>
+
+            <ion-item>
+              <ion-label>HIGH</ion-label>
+              <ion-radio slot="start" value="HIGH"></ion-radio>
+            </ion-item>
+          </ion-radio-group>
+        </ion-list>
+
+        <ion-list>
+          <ion-radio-group value="biff" (ionChange)="setLanguage($event)">
+            <ion-list-header>
+              <ion-label>Language</ion-label>
+            </ion-list-header>
+
+            <ion-item>
+              <ion-label>JAVA</ion-label>
+              <ion-radio slot="start" value="JAVA"></ion-radio>
+            </ion-item>
+
+            <ion-item>
+              <ion-label>JAVASCRIPT</ion-label>
+              <ion-radio slot="start" value="JAVASCRIPT"></ion-radio>
+            </ion-item>
+
+            <ion-item>
+              <ion-label>PHP</ion-label>
+              <ion-radio slot="start" value="PHP"></ion-radio>
+            </ion-item>
+          </ion-radio-group>
+        </ion-list>
+
+        <br>
+        <ion-button type="submit" color="success" fill="solid" size="large" expand="block"
+        [disabled]="name.invalid || description.invalid">Save</ion-button>      </form>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>

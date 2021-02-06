@@ -1,0 +1,24 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="dark">
+    <ion-title>
+      Applications
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Find all application</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list *ngFor="let app of applications">
+      <ion-item button [routerLink]="['/find-application/', app.id]" color="tertiary">
+        <ion-label>
+          {{app.name}}
+        </ion-label>
+      </ion-item>
+    </ion-list>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <ion-buttons slot="start">
+      <ion-button (click)="cancel()">
+        <ion-icon slot="icon-only" name="close-circle"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Back</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>{{application.name}}</ion-card-title>
+      <ion-card-subtitle>{{application.description}}</ion-card-subtitle>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-list>
+        <ion-item *ngIf="application.criticality==['LOW']" color="success">{{application.criticality}}</ion-item>
+        <ion-item *ngIf="application.criticality==['MEDIUM']" color="secondary">{{application.criticality}}</ion-item>
+        <ion-item *ngIf="application.criticality==['HIGH']" color="danger">{{application.criticality}}</ion-item>
+        <ion-item color="medium">{{application.language}}</ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-button expand="full" fill="outline" color="danger" (click)="deleteApplication()">Delete this enterprise</ion-button>
+</ion-content>
+

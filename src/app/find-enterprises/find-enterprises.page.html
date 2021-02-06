@@ -1,0 +1,30 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="dark">
+    <ion-title>
+      Enterprises
+    </ion-title>
+    <ion-buttons slot="primary" [routerLink]="['/add-enterprise']">
+      <ion-button fill="solid" color="secondary">
+        Add enterprise
+        <ion-icon slot="end" name="create-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Find all enterprises</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list *ngFor="let e of enterprises">
+      <ion-item button [routerLink]="['/find-enterprise/', e.id]" color="secondary">
+        <ion-label>
+          {{e.name}}
+        </ion-label>
+      </ion-item>
+    </ion-list>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

@@ -1,0 +1,82 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <ion-buttons slot="start">
+      <ion-button (click)="cancel()">
+        <ion-icon slot="icon-only" name="close-circle"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Back</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="stories">
+    <div class="story">
+      <div class="img-box">
+        <div class="content">{{calculateJava}}</div>
+      </div>
+      <p style="color: #86888f;">JAVA</p>
+    </div>
+    <div class="story">
+      <div class="img-box">
+        <div class="content">{{calculateJavascript}}</div>
+      </div>
+      <p style="color: #86888f;">JAVASCRIPT</p>
+    </div>
+    <div class="story">
+      <div class="img-box">
+        <div class="content">{{calculatePhp}}</div>
+      </div>
+      <p style="color: #86888f;">PHP</p>
+    </div>
+    <div class="story">
+      <div class="img-box">
+        <div class="content">{{calculateLow}}</div>
+      </div>
+      <p style="color: #86888f;">LOW</p>
+    </div>
+    <div class="story">
+      <div class="img-box">
+        <div class="content">{{calculateMedium}}</div>
+      </div>
+      <p style="color: #86888f;">MEDIUM</p>
+    </div>
+    <div class="story">
+      <div class="img-box">
+        <div class="content">{{calculateHigh}}</div>
+      </div>
+      <p style="color: #86888f;">HIGH</p>
+    </div>
+  </div>
+  <hr>
+
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>{{enterprise.name}}</ion-card-title>
+      <ion-card-subtitle>Enterprise details</ion-card-subtitle>
+      <ion-card-subtitle>{{enterprise.description}}</ion-card-subtitle>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-text color="danger">
+        <h1 style="margin-left: 15px;">Applications</h1>
+      </ion-text>
+      <ion-item>
+        <ion-label disabled="true">Add application</ion-label>
+        <ion-select (ionChange)="setApplication($event)">
+          <ion-select-option *ngFor="let app of applications" [value]="app.id">{{app.name}}</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-list *ngFor="let app of filterApps">
+        <ion-item color="dark">{{app.name}}</ion-item>
+        <ion-item *ngIf="app.criticality==['LOW']" color="success">{{app.criticality}}</ion-item>
+        <ion-item *ngIf="app.criticality==['MEDIUM']" color="secondary">{{app.criticality}}</ion-item>
+        <ion-item *ngIf="app.criticality==['HIGH']" color="danger">{{app.criticality}}</ion-item>
+        <ion-item color="medium">{{app.language}}</ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card><br>
+
+  <ion-button expand="full" fill="outline" color="danger" (click)="deleteEnterprise()">Delete this enterprise</ion-button>
+</ion-content>

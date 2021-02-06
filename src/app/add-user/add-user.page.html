@@ -1,0 +1,40 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="dark">
+    <ion-title>
+      Users
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <ion-card>
+    <ion-spinner name="bubbles" color="primary" class="center" *ngIf="progressBar"></ion-spinner>
+    <ion-card-content>
+      <form name="client" (ngSubmit)="addUser()" #formRegister="ngForm" novalidate>
+        <ion-item>
+          <ion-label position="floating">Name</ion-label>
+          <ion-input type="text" placeholder="Add user" name="name" [(ngModel)]="user.name" #name="ngModel" required></ion-input>
+        </ion-item>
+        <br>
+        <ion-button type="submit" color="success" fill="solid" size="large" expand="block" [disabled]="name.invalid">Save</ion-button>      </form>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Find all users</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list *ngFor="let u of users">
+      <ion-item lines="full">
+        <ion-label>
+          {{u.name}}
+        </ion-label>
+        <ion-icon color="success" slot="end" name="create-outline" style="cursor: pointer;" [routerLink]="['/add-application/', u.id]"></ion-icon>
+      </ion-item>
+    </ion-list>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
+
